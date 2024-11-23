@@ -1,8 +1,8 @@
 class Player:
-    def __init__(self, id, pos, balance):
+    def __init__(self, id, balance):
         self.id = id
-        self.pos = pos
         self.balance = balance
+        self.pos = 0
         self.owned = []
 
     def __str__(self):
