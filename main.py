@@ -1,2 +1,3 @@
-from game import info
+from game import init
 
+init.intialisePlayers()
