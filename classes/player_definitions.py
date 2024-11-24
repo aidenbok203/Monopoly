@@ -1,5 +1,6 @@
 from random import randint
 from game import init
+from classes import tile_definitions as t_def
 
 class Player:
     def __init__(self, id, balance):
@@ -34,3 +35,13 @@ class Player:
             return True
         else:
             return False
+
+    def removeProperty(self, tile: t_def.Tile):
+        """
+        Remove property from player
+        :param tile: Object of tile
+        :return: None
+        """
+        if tile in self.owned:
+            self.balance += tile.cost
+            self.owned.remove(tile)
