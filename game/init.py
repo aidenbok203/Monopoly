@@ -22,7 +22,12 @@ def intialisePlayers() -> None:
     :return: None
     """
     startMoney = int(input("Enter amount of money to start with: "))
-    for i in range(int(input("Input the number of players: "))):
+    playerNum = int(input("Input the number of players: "))
+    global bankruptLimit
+    bankruptLimit = playerNum - 1
+    global bankruptPlayers
+    bankruptPlayers = 0
+    for i in range(playerNum):
         name = input(f"Enter player {i + 1} name: ")
         name = p_def.Player(i + 1, startMoney)
         playerList.append(name)

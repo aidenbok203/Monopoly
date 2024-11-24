@@ -6,6 +6,7 @@ class Player:
         self.balance = balance
         self.pos = 0
         self.owned = []
+        self.bankrupt = False
 
     def __str__(self):
         return f"Player id {self.id}, position: {self.pos}, balance: ${self.balance}"

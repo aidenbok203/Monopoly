@@ -2,10 +2,44 @@ from game import init
 from classes import player_definitions as p_def
 from classes import tile_definitions as t_def
 
-def checkBankruptcy(player: p_def.Player):
-    
+def checkGameOver() -> object:
+    """
+    Checks whether the game is finished
+    :return: Object of winning player
+    """
+    found = False
+    if init.bankruptPlayers == init.bankruptLimit:
+        while not found:
+            for player in init.playerList:
+                if not player.bankrupt:
+                    found = True
+                    return player
+    return False
 
-def purchase(player: p_def.Player, property: t_def.Tile):
+def checkBankruptcy(player: p_def.Player) -> bool:
+    """
+    Checks if a user is bankrupt
+    :param player: Object of player
+    :return: bool, If user is bankrupt
+    """
+    if player.balance < 0:
+        player.bankrupt = True
+        init.bankruptPlayers += 1
+        return True
+    else:
+        return False
+
+def payRent(player:p_def.Player, property: t_def.Tile):
+    """
+    Remove rent of property from player balance
+    :param player: Object of player
+    :param property: int, Tile.pos
+    :return: bool, If user is bankrupt (Result of checkBankruptcy())
+    """
+    player.balance -= property.rent
+
+
+def purchase(player: p_def.Player, property: t_def.Tile) -> None:
     """
     Remove cost and add property to player
     :param player: Object of player
@@ -17,6 +51,7 @@ def purchase(player: p_def.Player, property: t_def.Tile):
         property.owned = True
         player.owned.append(property)
     else:
+        print(f"You do not have enough money to purchase {property}!")
 
 
 def roll(player: p_def.Player) -> None:
@@ -30,5 +65,10 @@ def roll(player: p_def.Player) -> None:
     for tile in init.board:
         if tile.pos == currentPos:
             print(f"You have landed on {tile.name}")
-    if not tile.owned and input("Would you like to purchase? (y/n)").lower() == "y":
-        
+    if tile.owned:
+        print(f"This tile is owned! You have to pay {tile.rent}")
+        payRent(player, tile)
+    elif not tile.owned and input("Would you like to purchase? (y/n)").lower() == "y":
+        purchase(player, tile)
+    else:
+        print("Continuing game...")

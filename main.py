@@ -2,19 +2,31 @@ from game import init
 from game import actions
 from classes import player_definitions as p_def
 
-def round(player: p_def.Player) -> None:
+def round(player: p_def.Player) -> str:
     """
     Run at start of each turn, perform actions
     :param player: Object of player
-    :return: None
+    :return: str, Whether game is completed
     """
     rolled = False
-    validate = False
-    while not rolled and validate:
+    roundFinish = False
+    while not roundFinish:
         init.displayMenu()
         action = input("What would you like to do? ")
         match action:
             case "r":
-                actions.roll(player)
+                if not rolled:
+                    rolled = True
+                    actions.roll(player)
+                    if not actions.checkGameOver():
+                        continue
+                    else:
+                        return "Game complete"
+                else:
+                    print("You have already rolled the dice! Choose another option.")
+            case "b":
+                print(f"Your balance is ${player.balance}.")
+            case "o":
+                
 
 def main():
