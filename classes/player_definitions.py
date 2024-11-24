@@ -1,4 +1,5 @@
 from random import randint
+from game import init
 
 class Player:
     def __init__(self, id, balance):
@@ -20,3 +21,16 @@ class Player:
         if self.pos > 26:
             self.pos -= 26
         return self.pos
+
+    def checkBankruptcy(self) -> bool:
+        """
+        Checks if a user is bankrupt
+        :param player: Object of player
+        :return: bool, If user is bankrupt
+        """
+        if self.balance < 0:
+            self.bankrupt = True
+            init.bankruptPlayers += 1
+            return True
+        else:
+            return False
