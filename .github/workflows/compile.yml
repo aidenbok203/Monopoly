@@ -29,6 +29,7 @@ jobs:
       - name: Compile to EXE
         run: |
           pyinstaller --onefile main.py
+          ls -la
           ls -la dist
 
       - name: Upload executable
