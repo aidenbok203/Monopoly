@@ -50,6 +50,24 @@ def round(player: p_def.Player) -> str:
                 for tile in player.owned:
                     if tile.pos == choice:
                         actions.upgradeHouse(player, tile)
+                        continue
+                    print("Tile not found!")
+            case "c":
+                roundFinish = True
+                print("Completing round...")
+            case _:
+                print("Invalid input.")
 
 
 def main():
+    init.initialiseTiles()
+    init.intialisePlayers()
+    while not actions.checkGameOver():
+        for player in init.playerList:
+            round(player)
+            if type(actions.checkGameOver()) == object:
+                break
+    print(f"{getattr(actions.checkGameOver(), "name")} has won the game!") #Include balance of winner
+
+if __name__ == "__main__":
+    main()

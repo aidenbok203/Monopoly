@@ -30,7 +30,7 @@ def purchase(player: p_def.Player, property: t_def.Tile) -> None:
     """
     Remove cost and add property to player
     :param player: Object of player
-    :param property: int, Tile.pos
+    :param property: Object of tile
     :return: None
     """
     if player.balance >= property.cost:
@@ -60,16 +60,18 @@ def roll(player: p_def.Player) -> None:
     else:
         print("Continuing game...")
 
-def upgradeHouse(player: p_def.Player, tile: t_def.Tile) -> None:
+def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     """
-
+    Adds level to tile, sets new rent, and charges player
+    :param player: Object of player
+    :return: None
     """
-    if tile.level == 5:
+    if property.level == 5:
         print("Your property is already fully upgraded!")
         return
-    if player.balance > tile.upgradeCost:
-        player.balance -= tile.upgradeCost
-        tile.level += 1
-        tile.rent = getattr(tile, f"l{tile.level}")
+    if player.balance > property.upgradeCost:
+        player.balance -= property.upgradeCost
+        property.level += 1
+        property.rent = getattr(property, f"l{property.level}")
     else:
         print("You do not have sufficient funds!")
