@@ -19,8 +19,8 @@ class Player:
         :return: int, the current position of player
         """
         self.pos += randint(1, 6)
-        if self.pos > 26:
-            self.pos -= 26
+        if self.pos > 22:
+            self.pos -= 22
         return self.pos
 
     def checkBankruptcy(self) -> bool:

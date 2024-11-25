@@ -46,7 +46,10 @@ def round(player: p_def.Player) -> str:
                 else:
                     print("You do not own this property!")
             case "l":
-                
+                choice = int(input("Enter the position of the property you want to sell: "))
+                for tile in player.owned:
+                    if tile.pos == choice:
+                        actions.upgradeHouse(player, tile)
 
 
 def main():
