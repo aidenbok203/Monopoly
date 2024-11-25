@@ -27,7 +27,9 @@ jobs:
           pip install pyinstaller
 
       - name: Compile to EXE
-        run: pyinstaller --onefile main.py
+        run: |
+          pyinstaller --onefile main.py
+          ls -la dist
 
       - name: Upload executable
         uses: actions/upload-artifact@v3
