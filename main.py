@@ -1,7 +1,7 @@
 from game import init
 from game import actions
 from classes import player_definitions as p_def
-from classes import tile_definitions as t_def
+from time import sleep
 
 def round(player: p_def.Player) -> str:
     """
@@ -11,7 +11,11 @@ def round(player: p_def.Player) -> str:
     """
     rolled = False
     roundFinish = False
+    print(f"It's {player.name}'s turn!")
     while not roundFinish:
+        sleep(1)
+        actions.clearTerminal()
+        print(f"It's {player.name}'s turn!")
         init.displayMenu()
         action = input("What would you like to do? ")
         match action:
@@ -30,23 +34,28 @@ def round(player: p_def.Player) -> str:
             case "o":
                 for tile in player.owned:
                     print(tile)
+                    input("Press enter to continue...")
             case "p":
                 prop = int(input("Enter the position of the property: "))
                 for tile in init.board:
                     if tile.pos == prop:
                         print(tile)
+                        input("Press enter to continue...")
             case "s":
                 choice = int(input("Enter the position of the property you want to sell: "))
                 for tile in player.owned:
                     if tile.pos == choice:
-                        player.removeProperty(tile)
-                        tile.sellTile()  # Reset the property
-                        print(f"Sold {tile.name} for ${tile.cost}.")
-                        break
+                        if input(f"Confirm you would like to sell {tile.name} for {tile.cost * 0.75}? (y/n) ").lower() == "y":
+                            player.removeProperty(tile)
+                            tile.sellTile()
+                            print(f"Sold {tile.name} for ${tile.cost * 0.75}.")
+                            break
+                        else:
+                            break
                 else:
                     print("You do not own this property!")
             case "l":
-                choice = int(input("Enter the position of the property you want to sell: "))
+                choice = int(input("Enter the position of the property you want to upgrade: "))
                 for tile in player.owned:
                     if tile.pos == choice:
                         actions.upgradeHouse(player, tile)
@@ -65,9 +74,11 @@ def main():
     while not actions.checkGameOver():
         for player in init.playerList:
             round(player)
-            if type(actions.checkGameOver()) == object:
+            winner = actions.checkGameOver()
+            if winner:
                 break
-    print(f"{getattr(actions.checkGameOver(), "name")} has won the game!") #Include balance of winner
+    if winner:
+        print(f"{winner.name} has won the game with ${winner.balance}!")
 
 if __name__ == "__main__":
     main()

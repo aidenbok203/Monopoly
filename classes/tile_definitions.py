@@ -16,7 +16,7 @@ class Tile:
     owned: bool = False
 
     def __str__(self):
-        return f"Position: {self.pos}, Name: {self.name}, Cost: {self.cost}, Level {self.level}, Upgrade cost:{self.upgradeCost}, Rent: {self.rent}, Owned: {self.owned}"
+        return f"Position: {self.pos}, Name: {self.name}, Cost: {self.cost}, Level {self.level}, Upgrade cost: {self.upgradeCost}, Rent: {self.rent}, Owned: {self.owned}"
 
     def sellTile(self):
         """

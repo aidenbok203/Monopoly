@@ -19,7 +19,9 @@ class Player:
         Rolls a dice and moves the player
         :return: int, the current position of player
         """
-        self.pos += randint(1, 6)
+        random = randint(1, 6)
+        print(f"You rolled a {random}!")
+        self.pos += random
         if self.pos > 22:
             self.pos -= 22
         return self.pos
@@ -44,5 +46,5 @@ class Player:
         :return: None
         """
         if tile in self.owned:
-            self.balance += tile.cost
+            self.balance += tile.cost * 0.75
             self.owned.remove(tile)

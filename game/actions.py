@@ -1,6 +1,8 @@
 from game import init
 from classes import player_definitions as p_def
 from classes import tile_definitions as t_def
+from os import system, name
+
 
 def checkGameOver() -> object:
     """
@@ -51,11 +53,12 @@ def roll(player: p_def.Player) -> None:
     for tile in init.board:
         if tile.pos == currentPos:
             print(f"You have landed on {tile.name}")
+            break
     if tile.owned:
         print(f"This tile is owned! You have to pay {tile.rent}")
         payRent(player, tile)
         player.checkBankruptcy()
-    elif not tile.owned and input("Would you like to purchase? (y/n)").lower() == "y":
+    elif not tile.owned and input("Would you like to purchase? (y/n) ").lower() == "y":
         purchase(player, tile)
     else:
         print("Continuing game...")
@@ -66,6 +69,9 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     :param player: Object of player
     :return: None
     """
+    if property not in player.owned:
+        print("You do not own this property!")
+        return
     if property.level == 5:
         print("Your property is already fully upgraded!")
         return
@@ -75,3 +81,13 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
         property.rent = getattr(property, f"l{property.level}")
     else:
         print("You do not have sufficient funds!")
+
+def clearTerminal():
+    """
+    Clears the terminal.
+    :return: None
+    """
+    if name == "nt":
+        system("cls")
+    else:
+        system("clear")
