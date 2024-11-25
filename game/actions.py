@@ -58,10 +58,14 @@ def roll(player: p_def.Player) -> None:
         print(f"This tile is owned! You have to pay {tile.rent}")
         payRent(player, tile)
         player.checkBankruptcy()
-    elif not tile.owned and input("Would you like to purchase? (y/n) ").lower() == "y":
-        purchase(player, tile)
     else:
-        print("Continuing game...")
+        try:
+            if input("Would you like to purchase? (y/n) ").lower() == "y":
+                purchase(player, tile)
+        except:
+            print("Invalid input.")
+        else:
+            print("Continuing game...")
 
 def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     """
