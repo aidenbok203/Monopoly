@@ -29,13 +29,11 @@ jobs:
       - name: Compile to EXE
         run: |
           pyinstaller --onefile main.py
-          ls -la
           ls -la dist
-          cat dist/main.exe
 
       - name: Upload executable
         uses: actions/upload-artifact@v3
         with:
           name: main-exe
-          path: dist/main.exe
+          path: dist/main
           if-no-files-found: warn
