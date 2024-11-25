@@ -12,8 +12,8 @@ def initialiseTiles() -> None:
     with open("db/tiles.txt", "r") as f:
         tiles = f.readlines()
         for tile in tiles:
-            pos, name, cost, l0, l1, l2, l3 = tile.strip().split(",")
-            pos = t_def.Tile(int(pos), name, int(cost), int(l0), int(l1), int(l2), int(l3))
+            pos, name, cost, l1, l2, l3, l4, l5, upgradeCost = tile.strip().split(",")
+            pos = t_def.Tile(int(pos), name, int(cost), int(l1), int(l2), int(l3), int(l4), int(l5), int(upgradeCost))
             board.append(pos)
 
 def intialisePlayers() -> None:

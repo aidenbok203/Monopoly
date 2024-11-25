@@ -16,7 +16,7 @@ def checkGameOver() -> object:
                     return player
     return False
 
-def payRent(player:p_def.Player, property: t_def.Tile):
+def payRent(player: p_def.Player, property: t_def.Tile):
     """
     Remove rent of property from player balance
     :param player: Object of player
@@ -40,7 +40,6 @@ def purchase(player: p_def.Player, property: t_def.Tile) -> None:
     else:
         print(f"You do not have enough money to purchase {property}!")
 
-
 def roll(player: p_def.Player) -> None:
     """
     Functionality for roll dice
@@ -60,3 +59,14 @@ def roll(player: p_def.Player) -> None:
         purchase(player, tile)
     else:
         print("Continuing game...")
+
+def upgradeHouse(player: p_def.Player, tile: t_def.Tile) -> None:
+    if tile.level == 5:
+        print("Your property is already fully upgraded!")
+        return
+    if player.balance > tile.upgradeCost:
+        player.balance -= tile.upgradeCost
+        tile.level += 1
+        tile.rent = getattr(tile, f"l{tile.level}")
+    else:
+        print("You do not have sufficient funds!")
