@@ -40,7 +40,7 @@ def purchase(player: p_def.Player, property: t_def.Tile) -> None:
         property.owned = True
         player.owned.append(property)
     else:
-        print(f"You do not have enough money to purchase {property}!")
+        print(f"You do not have enough money to purchase {property.name}!")
 
 def roll(player: p_def.Player) -> None:
     """
@@ -83,6 +83,7 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
         player.balance -= property.upgradeCost
         property.level += 1
         property.rent = getattr(property, f"l{property.level}")
+        print(f"Upgraded {property.name} to level {property.level}!")
     else:
         print("You do not have sufficient funds!")
 

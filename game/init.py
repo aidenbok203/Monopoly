@@ -28,7 +28,7 @@ def intialisePlayers() -> None:
             playerNum = int(input("Input the number of players: "))
             validate = True
         except:
-            print(”Invalid input!)
+            print("Invalid input!")
     global bankruptLimit
     bankruptLimit = playerNum - 1
     global bankruptPlayers
