@@ -28,7 +28,7 @@ jobs:
 
       - name: Compile to EXE
         run: |
-          pyinstaller --onefile main.py
+          pyinstaller --onefile main.py --add-data "db/tiles.txt;db"
           dir dist
 
       - name: Upload executable
