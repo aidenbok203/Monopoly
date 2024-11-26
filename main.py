@@ -1,7 +1,14 @@
+import os
+import sys
 from game import init
 from game import actions
 from classes import player_definitions as p_def
 from time import sleep
+
+def resource_path(relative_path):
+    """ Get the absolute path to the resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 def round(player: p_def.Player) -> str:
     """
@@ -75,7 +82,6 @@ def round(player: p_def.Player) -> str:
                 print("Completing round...")
             case _:
                 print("Invalid input.")
-
 
 def main():
     init.initialiseTiles()
