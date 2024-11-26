@@ -26,6 +26,9 @@ def intialisePlayers() -> None:
         try:
             startMoney = int(input("Enter amount of money to start with: "))
             playerNum = int(input("Input the number of players: "))
+            if playerNum == 1:
+                print("You need at least 2 players!")
+                continue
             validate = True
         except:
             print("Invalid input!")
