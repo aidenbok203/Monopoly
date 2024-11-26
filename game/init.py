@@ -21,8 +21,14 @@ def intialisePlayers() -> None:
     Allow user to create new players at the start of the game
     :return: None
     """
-    startMoney = int(input("Enter amount of money to start with: "))
-    playerNum = int(input("Input the number of players: "))
+    validate = False
+    while not validate:
+        try:
+            startMoney = int(input("Enter amount of money to start with: "))
+            playerNum = int(input("Input the number of players: "))
+            validate = True
+        except:
+            print(”Invalid input!)
     global bankruptLimit
     bankruptLimit = playerNum - 1
     global bankruptPlayers
