@@ -1,15 +1,23 @@
 from classes import tile_definitions as t_def
 from classes import player_definitions as p_def
+import os
+import sys
 
 board = []
 playerList = []
+
+def resource_path(relative_path):
+    """ Get the absolute path to the resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 def initialiseTiles() -> None:
     """
     Initialise tile properties from database
     :return: None
     """
-    with open("db/tiles.txt", "r") as f:
+    tiles_path = resource_path('db/tiles.txt')
+    with open(tiles_path, "r") as f:
         tiles = f.readlines()
         for tile in tiles:
             pos, name, cost, l1, l2, l3, l4, l5, upgradeCost = tile.strip().split(",")
