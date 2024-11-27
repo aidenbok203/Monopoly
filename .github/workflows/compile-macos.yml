@@ -38,5 +38,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: Monopoly-macos
+        name: monopoly-macos
         path: main.zip
