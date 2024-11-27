@@ -25,4 +25,4 @@ jobs:
 
     - name: Compile to Unix executable
       run: |
-        pyinstaller --onefile main.py
+        pyinstaller --onefile main.py --add-data "db/tiles.txt;db"
