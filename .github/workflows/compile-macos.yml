@@ -31,8 +31,12 @@ jobs:
       run: |
         chmod +x dist/main
 
+    - name: Compress executable
+      run: |
+        zip -j main.zip dist/main
+
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: Monopoly-macos
-        path: dist/main
+        path: main.zip
