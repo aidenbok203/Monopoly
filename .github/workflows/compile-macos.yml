@@ -26,3 +26,9 @@ jobs:
     - name: Compile to Unix executable
       run: |
         pyinstaller --onefile --add-data "db/tiles.txt:db" main.py
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: unix-executable
+        path: dist/main
