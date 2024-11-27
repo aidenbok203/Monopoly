@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - name: Checkout repository
@@ -25,4 +25,4 @@ jobs:
 
     - name: Compile to Unix executable
       run: |
-        pyinstaller --onefile main.py --add-data "db/tiles.txt;db"
+        pyinstaller --onefile --add-data "db/tiles.txt:db" main.py
