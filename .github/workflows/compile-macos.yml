@@ -23,9 +23,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller
 
-    - name: Compile to Unix executable
+    - name: Compile to Unix executable for Intel
       run: |
-        pyinstaller --onefile --add-data "db/tiles.txt:db" main.py
+        pyinstaller --onefile --add-data "db/tiles.txt:db" --target-architecture=x86_64 main.py
 
     - name: Set executable permissions
       run: |
