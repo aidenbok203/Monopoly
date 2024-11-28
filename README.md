@@ -23,7 +23,7 @@
 | **AI Players** | Implementing AI opponents that can participate in the game with basic strategies. | Planned |
 | **GUI Support** | Creating a graphical user interface to enhance user interaction and gameplay experience. | Planned |
 | **State Saving** | Implementing functionality to save and load game states for resuming play later. | Planned |
-| **Auctions** | Introduce a bidding system for unowned properties | Planned |
+| **Auctions** | Introduce a bidding system for unowned properties. | Planned |
 
 ---
 
