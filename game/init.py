@@ -17,7 +17,8 @@ def initialiseTiles() -> None:
     :return: None
     """
     if getattr(sys, "frozen", False):
-        tiles_path = resource_path("../db/tiles.txt")
+        base_path = os.path.dirname(sys.executable)
+        tiles_path = os.path.join(base_path, 'db', 'tiles.txt')
     else:
         tiles_path = resource_path("db/tiles.txt")
     with open(tiles_path, "r") as f:
