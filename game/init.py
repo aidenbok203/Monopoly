@@ -16,7 +16,10 @@ def initialiseTiles() -> None:
     Initialise tile properties from database
     :return: None
     """
-    tiles_path = resource_path('../db/tiles.txt')
+    if getattr(sys, "frozen", False):
+        tiles_path = resource_path("../db/tiles.txt")
+    else:
+        tiles_path = resource_path("db/tiles.txt")
     with open(tiles_path, "r") as f:
         tiles = f.readlines()
         for tile in tiles:
