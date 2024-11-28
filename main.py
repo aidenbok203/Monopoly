@@ -61,15 +61,13 @@ def round(player: p_def.Player) -> str:
                 except:
                     print("Invalid input!")
             case "l":
-                try:
-                    choice = int(input("Enter the position of the property you want to upgrade: "))
-                    for tile in player.owned:
-                        if tile.pos == choice:
+                for tile in player.owned:
+                    if tile.pos == player.pos:
+                        if input(f"Confirm you want to upgrade {tile.name} for ${tile.upgradeCost}? (y/n)").lower():
                             actions.upgradeHouse(player, tile)
-                            continue
-                        print("Tile not found!")
-                except:
-                    print("Invalid input")
+                            break
+                else:
+                    print("You do not own this property!")
             case "c":
                 roundFinish = True
                 print("Completing round...")
