@@ -6,6 +6,17 @@ import sys
 board = []
 playerList = []
 
+setLimit = {
+    "Brown": 2,
+    "Teal": 3,
+    "Pink": 3,
+    "Orange": 3,
+    "Red": 3,
+    "Yellow": 3,
+    "Green": 3,
+    "Blue": 2
+}
+
 def resource_path(relative_path):
     """ Get the absolute path to the resource, works for dev and for PyInstaller """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
@@ -26,8 +37,8 @@ def initialiseTiles() -> None:
     with open(tiles_path, "r") as f:
         tiles = f.readlines()
         for tile in tiles:
-            pos, name, cost, l1, l2, l3, l4, l5, upgradeCost = tile.strip().split(",")
-            pos = t_def.Tile(int(pos), name, int(cost), int(l1), int(l2), int(l3), int(l4), int(l5), int(upgradeCost), int(l1))
+            pos, group, name, cost, l1, l2, l3, l4, l5, upgradeCost = tile.strip().split(",")
+            pos = t_def.Tile(int(pos), group, name, int(cost), int(l1), int(l2), int(l3), int(l4), int(l5), int(upgradeCost), int(l1))
             board.append(pos)
 
 def intialisePlayers() -> None:

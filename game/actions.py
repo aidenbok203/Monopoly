@@ -76,6 +76,13 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     if property not in player.owned:
         print("You do not own this property!")
         return
+    match = 0
+    for tile in player.owned:
+        if tile.colour == property.colour:
+            match += 1
+    if match != init.setLimit[property.colour]:
+        print(f"You do not have the full set of {property.colour} properties!")
+        return
     if property.level == 5:
         print("Your property is already fully upgraded!")
         return
