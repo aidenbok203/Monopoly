@@ -9,14 +9,15 @@
 9,Orange,Bow Street,180,14,70,200,550,750,100
 10,Orange,Marlborough Street,180,14,70,200,550,750,100
 11,Orange,Vine Street,200,16,80,220,600,800,100
-12,Red,The Strand,220,18,90,250,700,875,150
-13,Red,Fleet Street,220,18,90,250,700,875,150
-14,Red,Trafalgar Square,240,20,100,300,750,925,150
-15,Yellow,Leicester Square,260,22,110,330,800,975,150
-16,Yellow,Coventry Street,260,22,110,330,800,975,150
-17,Yellow,Picadilly,280,22,120,360,850,1025,150
-18,Green,Regent Street,300,26,130,390,900,1100,200
-19,Green,Oxford Street,300,26,130,390,900,1100,200
-20,Green,Bond Street,320,28,150,450,1000,1200,200
-21,Blue,Park Lane,350,35,175,500,1100,1300,200
-22,Blue,Mayfair,400,50,200,600,1400,1700,200
+12,Null,Jail,0,0,0,0,0,0,0
+13,Red,The Strand,220,18,90,250,700,875,150
+14,Red,Fleet Street,220,18,90,250,700,875,150
+15,Red,Trafalgar Square,240,20,100,300,750,925,150
+16,Yellow,Leicester Square,260,22,110,330,800,975,150
+17,Yellow,Coventry Street,260,22,110,330,800,975,150
+18,Yellow,Picadilly,280,22,120,360,850,1025,150
+19,Green,Regent Street,300,26,130,390,900,1100,200
+20,Green,Oxford Street,300,26,130,390,900,1100,200
+21,Green,Bond Street,320,28,150,450,1000,1200,200
+22,Blue,Park Lane,350,35,175,500,1100,1300,200
+23,Blue,Mayfair,400,50,200,600,1400,1700,200

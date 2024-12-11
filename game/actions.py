@@ -48,10 +48,19 @@ def roll(player: p_def.Player) -> None:
     :param player: Object of player
     :return: None
     """
+    if player.jailed:
+        player.jail()
+        return
     currentPos = player.rollDice()
+    if currentPos == "jail":
+        player.jail()
+        return
     player.pos = currentPos
     for tile in init.board:
         if tile.pos == currentPos:
+            if tile.name == "Jail":
+                print("You are visiting the jail!")
+                return
             print(f"You have landed on {tile.name}")
             break
     if tile.owned:
@@ -86,7 +95,7 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     if property.level == 5:
         print("Your property is already fully upgraded!")
         return
-    if player.balance > property.upgradeCost:
+    if player.balance >= property.upgradeCost:
         player.balance -= property.upgradeCost
         property.level += 1
         property.rent = getattr(property, f"l{property.level}")

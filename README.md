@@ -3,7 +3,7 @@
 2. Download monopoly-win.zip.
 3. Unzip and run main.exe.
 
-## How to install (MacOS) 
+## How to install (MacOS)
 1. Click the Releases tab on the right, or [here.](https://github.com/aidenbok203/Monopoly/releases)
 2. Download monopoly-macos.zip
 3. Unzip and run main.
@@ -17,7 +17,7 @@
 |------------------------------------|--------------------------------------------------------------|---------------|
 | **Improve Upgrade Logic** | Enhancing the logic for property upgrades to ensure a smoother gameplay experience. | Completed |
 | **Chance and Community Chest** | Implementing Chance and Community Chest cards with various effects. | Planned |
-| **Jail and Pass Go** | Adding mechanics for going to jail and collecting money when passing "Go". | Planned |
+| **Jail and Pass Go** | Adding mechanics for going to jail and collecting money when passing "Go". | Completed |
 | **Replace Selling with Mortgages** | Introducing a mortgage system instead of direct selling for properties. | Planned |
 | **Player Trading System** | Developing a trading system for players to negotiate property trades and cash exchanges. | Planned |
 | **AI Players** | Implementing AI opponents that can participate in the game with basic strategies. | Planned |

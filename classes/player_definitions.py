@@ -9,6 +9,8 @@ class Player:
         self.balance = balance
         self.pos = 0
         self.owned = []
+        self.sameDice = 0
+        self.jailed = False
         self.bankrupt = False
 
     def __str__(self):
@@ -20,11 +22,52 @@ class Player:
         :return: int, the current position of player
         """
         random = randint(1, 6)
-        print(f"You rolled a {random}!")
-        self.pos += random
+        random2 = randint(1, 6)
+        print(f"You rolled a {random} and {random2}!")
+        if random == random2:
+            self.sameDice += 1
+            print(f"You have rolled the same number! It is your {self.sameDice} double!")
+            if self.sameDice == 3:
+                self.jailed = True
+                self.sameDice = 0
+                print("You are in jail!")
+                return "jail"
+        else:
+            self.sameDice = 0
+        self.pos += random + random2
         if self.pos > 22:
             self.pos -= 22
+            input("You have passed go! Claim $200...")
+            self.balance += 200
         return self.pos
+
+    def jail(self) -> bool:
+        """
+        Rolls dice to get out of jail, or pay $50
+        :param player: Object of player
+        :return: bool, if user can get out of jail.
+        """
+        print("You are in jail.")
+        match input("Would you like to roll the dice or pay $50? (r/p) "):
+            case "r":
+                random, random2 = randint(1,6), randint(1, 6)
+                print(f"You have rolled {random} and {random2}.")
+                if random == random2:
+                    self.jailed = False
+                    print("You have been released!")
+                return
+            case "p":
+                match input("Confirm you would like to bail for $50? (y/n) "):
+                    case "y":
+                        self.balance -= 50
+                        print("You have been released!")
+                        self.jailed = False
+                        return
+                    case "n":
+                        self.jail()
+                    case _:
+                        print("Invalid input.")
+                        return
 
     def checkBankruptcy(self) -> bool:
         """
