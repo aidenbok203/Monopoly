@@ -1,3 +1,4 @@
+from classes import card_definitions as c_def
 from classes import tile_definitions as t_def
 from classes import player_definitions as p_def
 import os
@@ -21,6 +22,14 @@ def resource_path(relative_path):
     """ Get the absolute path to the resource, works for dev and for PyInstaller """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
+
+def initialiseCards() -> None:
+    """
+    Initialise community chest and chance cards from database
+    :return: None
+    """
+
+
 
 def initialiseTiles() -> None:
     """
