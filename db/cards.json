@@ -80,7 +80,7 @@
         {
             "name": "Doctor's fee. Pay £50",
             "functions": [
-                "Player.balance -= 50",
+                "Player.balance -= 50"
             ]
         },
         {
