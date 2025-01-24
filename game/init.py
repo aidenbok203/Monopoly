@@ -72,7 +72,7 @@ def initialiseTiles() -> None:
             pos = t_def.Tile(int(pos), group, name, int(cost), int(l1), int(l2), int(l3), int(l4), int(l5), int(upgradeCost), int(l1))
             board.append(pos)
 
-def intialisePlayers() -> None:
+def initialisePlayers() -> None:
     """
     Allow user to create new players at the start of the game
     :return: None
