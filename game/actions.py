@@ -83,7 +83,7 @@ def roll(player: p_def.Player) -> None:
             print(f"You have landed on {tile.name}")
             if tile.name == "Chance Card" or tile.name == "Community Chest":
                 drawCard(player, tile.name)
-                sleep(2.5)
+                input("Press enter to continue...")
                 return
             break
     if tile.owned:
