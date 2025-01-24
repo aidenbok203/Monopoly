@@ -126,6 +126,18 @@
             ]
         },
         {
+            "name": "You have contracted Coronavirus. Lose £45 due to tests and vaccine costs (the government is poor)",
+            "functions": [
+                "Player.balance -= 45"
+            ]
+        },
+        {
+            "name": "You have won second prize in a remote controlled helicopter contest. Collect £10, but lose any romantic partners.",
+            "functions": [
+                "Player.balance += 10"
+            ]
+        },
+        {
             "name": "You inherit £100",
             "functions": [
                 "Player.balance += 100"
