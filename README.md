@@ -4,7 +4,7 @@
 | Feature                            | Description                                                  | Status        |
 |------------------------------------|--------------------------------------------------------------|---------------|
 | **Improve Upgrade Logic** | Enhancing the logic for property upgrades to ensure a smoother gameplay experience. | Completed |
-| **Chance and Community Chest** | Implementing Chance and Community Chest cards with various effects. | Planned |
+| **Chance and Community Chest** | Implementing Chance and Community Chest cards with various effects. | Completed |
 | **Jail and Pass Go** | Adding mechanics for going to jail and collecting money when passing "Go". | Completed |
 | **Replace Selling with Mortgages** | Introducing a mortgage system instead of direct selling for properties. | Planned |
 | **Player Trading System** | Developing a trading system for players to negotiate property trades and cash exchanges. | Planned |

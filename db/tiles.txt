@@ -1,21 +1,21 @@
 0,Null,Go,0,0,0,0,0,0,0
 1,Brown,Old Kent Road,60,2,10,30,90,160,50
-2,Null,Community,0,0,0,0,0,0,0
+2,Null,Community Chest,0,0,0,0,0,0,0
 3,Brown,Whitechapel Road,60,4,20,60,180,320,50
 4,Teal,The Angel Islington,100,6,30,90,270,400,50
-5,Null,Chance,0,0,0,0,0,0,0
+5,Null,Chance Card,0,0,0,0,0,0,0
 6,Teal,Euston Road,100,6,30,90,270,400,50
 7,Teal,Pentonville Road,120,8,40,100,300,450,50
 8,Pink,Pall Mall,140,10,50,150,450,625,100
 9,Pink,Whitehall,140,10,50,150,450,625,100
 10,Pink,Northumberland Avenue,160,12,60,180,500,700,100
 11,Orange,Bow Street,180,14,70,200,550,750,100
-12,Null,Community,0,0,0,0,0,0,0
+12,Null,Community Chest,0,0,0,0,0,0,0
 13,Orange,Marlborough Street,180,14,70,200,550,750,100
 14,Orange,Vine Street,200,16,80,220,600,800,100
 15,Null,Jail,0,0,0,0,0,0,0
 16,Red,The Strand,220,18,90,250,700,875,150
-17,Null,Chance,0,0,0,0,0,0,0
+17,Null,Chance Card,0,0,0,0,0,0,0
 18,Red,Fleet Street,220,18,90,250,700,875,150
 19,Red,Trafalgar Square,240,20,100,300,750,925,150
 20,Yellow,Leicester Square,260,22,110,330,800,975,150
@@ -23,8 +23,8 @@
 22,Yellow,Picadilly,280,22,120,360,850,1025,150
 23,Green,Regent Street,300,26,130,390,900,1100,200
 24,Green,Oxford Street,300,26,130,390,900,1100,200
-25,Null,Chest,0,0,0,0,0,0,0
+25,Null,Community Chest,0,0,0,0,0,0,0
 26,Green,Bond Street,320,28,150,450,1000,1200,200
-27,Null,Chance,0,0,0,0,0,0,0
+27,Null,Chance Card,0,0,0,0,0,0,0
 28,Blue,Park Lane,350,35,175,500,1100,1300,200
 29,Blue,Mayfair,400,50,200,600,1400,1700,200

@@ -3,9 +3,12 @@ from classes import tile_definitions as t_def
 from classes import player_definitions as p_def
 import os
 import sys
+import json
 
 board = []
 playerList = []
+chanceList = []
+communityList = []
 
 setLimit = {
     "Brown": 2,
@@ -28,6 +31,25 @@ def initialiseCards() -> None:
     Initialise community chest and chance cards from database
     :return: None
     """
+    global chanceList, communityList
+    if getattr(sys, "frozen", False):
+        # Running in a bundled executable
+        cards_path = resource_path("db/cards.json")
+    else:
+        # Running in a local development environment
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        cards_path = os.path.join(base_path, "../db/cards.json")
+    with open(cards_path, "r") as f:
+        data = json.load(f)
+    chanceList = [
+        c_def.Card(card["name"], card["functions"])
+        for card in data["chance"]
+    ]
+    communityList = [
+        c_def.Card(card["name"], card["functions"])
+        for card in data["community"]
+    ]
+    return chanceList, communityList
 
 
 
@@ -36,7 +58,7 @@ def initialiseTiles() -> None:
     Initialise tile properties from database
     :return: None
     """
-    if getattr(sys, 'frozen', False):
+    if getattr(sys, "frozen", False):
         # Running in a bundled executable
         tiles_path = resource_path('db/tiles.txt')
     else:
@@ -58,6 +80,7 @@ def intialisePlayers() -> None:
     validate = False
     while not validate:
         try:
+            global playerNum
             startMoney = int(input("Enter amount of money to start with: "))
             playerNum = int(input("Input the number of players: "))
             if playerNum == 1:
