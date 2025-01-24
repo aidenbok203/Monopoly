@@ -82,7 +82,7 @@ class Player:
         else:
             return False
 
-    def removeProperty(self, tile: t_def.Tile):
+    def removeProperty(self, tile: t_def.Tile) -> None:
         """
         Remove property from player
         :param tile: Object of tile

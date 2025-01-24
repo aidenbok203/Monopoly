@@ -45,7 +45,33 @@ def purchase(player: p_def.Player, property: t_def.Tile) -> None:
     else:
         print(f"You do not have enough money to purchase {property.name}!")
 
+def resetCards(type: str) -> None:
+    """
+    Resets all cards to unused
+    :param type: str, "Chance Card" or "Community Chest"
+    :return: None
+    """
+    match type:
+        case "Chance Card":
+            for card in init.chanceList:
+                if not card.used:
+                    return
+            for card in init.chanceList:
+                card.used = False
+        case "Community Chest":
+            for card in init.communityList:
+                if not card.used:
+                    return
+            for card in init.communityList:
+                card.used = False
+
 def drawCard(player: p_def.Player, type: str) -> None:
+    """
+    Draws a card from the specified deck
+    :param player: Object of player
+    :param type: str, "Chance Card" or "Community Chest"
+    :return: None
+    """
     match type:
         case "Chance Card":
             while True:
@@ -60,6 +86,7 @@ def drawCard(player: p_def.Player, type: str) -> None:
     print(f"You have drawn \"{card.title}\".")
     card.used = True
     card.execute(player)
+    resetCards()
 
 def roll(player: p_def.Player) -> None:
     """
@@ -109,6 +136,7 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     """
     Adds level to tile, sets new rent, and charges player
     :param player: Object of player
+    :param property: Object of tile
     :return: None
     """
     if property not in player.owned:

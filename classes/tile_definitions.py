@@ -19,7 +19,7 @@ class Tile:
     def __str__(self):
         return f"Position: {self.pos}, Colour: {self.colour}, Name: {self.name}, Cost: {self.cost}, Level {self.level}, Upgrade cost: {self.upgradeCost}, Rent: {self.rent}, Owned: {self.owned}"
 
-    def sellTile(self):
+    def sellTile(self) -> None:
         """
         Revert the tile to default
         :return: None

@@ -15,6 +15,7 @@ class Card:
         """
         Executes the function(s) attributed to the card for the specified player
         :param player: Object of player
+        :return: None
         """
         context = {
             "Player": player,
