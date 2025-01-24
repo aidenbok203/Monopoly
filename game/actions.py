@@ -4,7 +4,6 @@ from classes import player_definitions as p_def
 from classes import tile_definitions as t_def
 from os import system, name
 from random import randint
-from time import sleep
 
 
 def checkGameOver() -> object:
