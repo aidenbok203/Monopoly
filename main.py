@@ -76,7 +76,8 @@ def round(player: p_def.Player) -> str:
 
 def main():
     init.initialiseTiles()
-    init.intialisePlayers()
+    init.initialiseCards()
+    init.initialisePlayers()
     while not actions.checkGameOver():
         for player in init.playerList:
             round(player)

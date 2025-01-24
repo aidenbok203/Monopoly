@@ -1,0 +1,135 @@
+{
+    "chance": [
+        {
+            "name": "Advance to go",
+            "functions": [
+                "Player.pos = 0",
+                "Player.balance += 200"
+            ]
+        },
+        {
+            "name": "Advance to Trafalgar Square",
+            "functions": [
+                "Player.pos = 15"
+            ]
+        },
+        {
+            "name": "Advance to Mayfair",
+            "functions": [
+                "Player.pos = 25"
+            ]
+        },
+        {
+            "name": "Advance to Pall Mall",
+            "functions": [
+                "Player.pos = 8"
+            ]
+        },
+        {
+            "name": "Bank pays you dividend of £50",
+            "functions": [
+                "Player.balance += 50"
+            ]
+        },
+        {
+            "name": "Go back 3 spaces",
+            "functions": [
+                "Player.pos -= 3"
+            ]
+        },
+        {
+            "name": "Go directly to jail",
+            "functions": [
+                "Player.pos = 15"
+            ]
+        },
+        {
+            "name": "Speeding fine £15",
+            "functions": [
+                "Player.balance -= 15"
+            ]
+        },
+        {
+            "name": "You have been elected Chairman of the Board. Pay each player £50",
+            "functions": [
+                "Player.balance -= init.playerNum * 50"
+            ]
+        },
+        {
+            "name": "Your building loan matures. Collect £150",
+            "functions": [
+                "Player.balance += 150"
+            ]
+        }
+    ],
+
+    "community": [
+        {
+            "name": "Advance to go (Collect £200)",
+            "functions": [
+                "Player.pos = 0",
+                "Player.balance += 200"
+            ]
+        },
+        {
+            "name": "Bank error in your favour. Collect £200",
+            "functions": [
+                "Player.balance += 200"
+            ]
+        },
+        {
+            "name": "Doctor's fee. Pay £50",
+            "functions": [
+                "Player.balance -= 50"
+            ]
+        },
+        {
+            "name": "From sale of stock you get £50",
+            "functions": [
+                "Player.balance += 50"
+            ]
+        },
+        {
+            "name": "Holiday fund matures. Receive £100",
+            "functions": [
+                "Player.balance += 100"
+            ]
+        },
+        {
+            "name": "Income tax refund. Collect £20",
+            "functions": [
+                "Player.balance += 20"
+            ]
+        },
+        {
+            "name": "Pay hospital fees of £100",
+            "functions": [
+                "Player.balance -= 100"
+            ]
+        },
+        {
+            "name": "Pay School fees of £50",
+            "functions": [
+                "Player.balance -= 50"
+            ]
+        },
+        {
+            "name": "Receive £25 consultancy fee",
+            "functions": [
+                "Player.balance += 25"
+            ]
+        },
+        {
+            "name": "You have won second prize in a beauty contest. Collect £10",
+            "functions": [
+                "Player.balance += 10"
+            ]
+        },
+        {
+            "name": "You inherit £100",
+            "functions": [
+                "Player.balance += 100"
+            ]
+        }
+    ]
+}
