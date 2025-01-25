@@ -91,3 +91,19 @@ class Player:
         if tile in self.owned:
             self.balance += tile.cost * 0.75
             self.owned.remove(tile)
+
+    def dictForm(self):
+        """
+        Returns in dictionary format
+        :return dict: Dictionary including data of player object
+        """
+        return {
+            "id": self.id,
+            "name": self.name,
+            "balance": self.balance,
+            "pos": self.pos,
+            "owned": self.owned,
+            "sameDice": self.sameDice,
+            "jailed": self.jailed,
+            "bankrupt": self.bankrupt
+        }

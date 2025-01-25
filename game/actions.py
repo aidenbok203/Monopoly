@@ -4,6 +4,7 @@ from classes import player_definitions as p_def
 from classes import tile_definitions as t_def
 from os import system, name
 from random import randint
+import json
 
 
 def checkGameOver() -> object:
@@ -68,7 +69,7 @@ def drawCard(player: p_def.Player, type: str) -> None:
     """
     Draws a card from the specified deck
     :param player: Object of player
-    :param type: str, "Chance Card" or "Community Chest"
+    :param str: "Chance Card" or "Community Chest"
     :return: None
     """
     match type:
@@ -85,7 +86,7 @@ def drawCard(player: p_def.Player, type: str) -> None:
     print(f"You have drawn \"{card.title}\".")
     card.used = True
     card.execute(player)
-    resetCards()
+    resetCards(type)
 
 def roll(player: p_def.Player) -> None:
     """
@@ -159,7 +160,21 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     else:
         print("You do not have sufficient funds!")
 
-def clearTerminal():
+def stateSave() -> str:
+    """
+    Writes current variables into json file
+    :return str: 
+    """
+    # Player states
+    try:
+        data = [player.dictForm() for player in init.playerList]
+        with open(init.path("db/save.json"), "w") as f:
+            json.dump(data, f, indent = 4)
+        return "Game saved!"
+    except Exception as e:
+        return f"Error occured: {e}"
+
+def clearTerminal() -> None:
     """
     Clears the terminal.
     :return: None

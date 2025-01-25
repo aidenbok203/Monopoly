@@ -21,10 +21,21 @@ setLimit = {
     "Blue": 2
 }
 
-def resource_path(relative_path):
-    """ Get the absolute path to the resource, works for dev and for PyInstaller """
+def path(relative_path) -> str:
+    """
+    Get the absolute path to the resource
+    :param relative_path: Path to the file
+    :return str: Absolute path to resource
+    """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
+    if getattr(sys, "frozen", False):
+        # Running in a bundled executable
+        abs_path = os.path.join(base_path, relative_path)
+    else:
+        # Running in a local env
+        base_path = os.path.dirname(os.path.abspath(__file__))
+        abs_path = os.path.join(base_path, f"../{relative_path}")
+    return abs_path
 
 def initialiseCards() -> None:
     """
@@ -32,14 +43,7 @@ def initialiseCards() -> None:
     :return: None
     """
     global chanceList, communityList
-    if getattr(sys, "frozen", False):
-        # Running in a bundled executable
-        cards_path = resource_path("db/cards.json")
-    else:
-        # Running in a local development environment
-        base_path = os.path.dirname(os.path.abspath(__file__))
-        cards_path = os.path.join(base_path, "../db/cards.json")
-    with open(cards_path, "r") as f:
+    with open(path("db/cards.json"), "r") as f:
         data = json.load(f)
     chanceList = [
         c_def.Card(card["name"], card["functions"])
@@ -51,21 +55,12 @@ def initialiseCards() -> None:
     ]
     return chanceList, communityList
 
-
-
 def initialiseTiles() -> None:
     """
     Initialise tile properties from database
     :return: None
     """
-    if getattr(sys, "frozen", False):
-        # Running in a bundled executable
-        tiles_path = resource_path('db/tiles.txt')
-    else:
-        # Running in a local development environment
-        base_path = os.path.dirname(os.path.abspath(__file__))
-        tiles_path = os.path.join(base_path, '../db/tiles.txt')
-    with open(tiles_path, "r") as f:
+    with open(path("db/tiles.txt"), "r") as f:
         tiles = f.readlines()
         for tile in tiles:
             pos, group, name, cost, l1, l2, l3, l4, l5, upgradeCost = tile.strip().split(",")
@@ -109,3 +104,5 @@ def displayMenu() -> None:
     print("Sell property................s")
     print("Upgrade property.............l")
     print("Complete turn................c")
+    print("Save game....................g")
+    print("Close game...................f")

@@ -71,6 +71,13 @@ def round(player: p_def.Player) -> str:
             case "c":
                 roundFinish = True
                 print("Completing round...")
+            case "g":
+                print(actions.stateSave())
+            case "f":
+                if input("Enter \"y\" if you would like to exit the game: ") == "y":
+                    print("Exiting game...")
+                    sleep(2.5)
+                    exit()
             case _:
                 print("Invalid input.")
 
