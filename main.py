@@ -49,7 +49,7 @@ def round(player: p_def.Player) -> str:
                     choice = int(input("Enter the position of the property you want to sell: "))
                     for tile in player.owned:
                         if tile.pos == choice:
-                            if input(f"Confirm you would like to sell {tile.name} for {tile.cost * 0.75}? (y/n) ").lower() == "y":
+                            if input(f"Confirm you would like to sell {tile.name} for ${tile.cost * 0.75}? (y/n) ").lower() == "y":
                                 player.removeProperty(tile)
                                 tile.sellTile()
                                 print(f"Sold {tile.name} for ${tile.cost * 0.75}.")
@@ -63,7 +63,7 @@ def round(player: p_def.Player) -> str:
             case "l":
                 for tile in player.owned:
                     if tile.pos == player.pos:
-                        if input(f"Confirm you want to upgrade {tile.name} for ${tile.upgradeCost}? (y/n)").lower():
+                        if input(f"Confirm you want to upgrade {tile.name} for ${tile.upgradeCost}? (y/n) ").lower():
                             actions.upgradeHouse(player, tile)
                             break
                 else:

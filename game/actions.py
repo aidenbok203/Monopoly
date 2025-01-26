@@ -169,7 +169,7 @@ def stateSave() -> str:
     try:
         data = [player.dictForm() for player in init.playerList]
         with open(init.path("db/save.json"), "w") as f:
-            json.dump(data, f, indent = 4)
+            json.dump({"players": data}, f, indent = 4)
         return "Game saved!"
     except Exception as e:
         return f"Error occured: {e}"

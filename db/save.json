@@ -1,0 +1,50 @@
+{
+    "players": [
+        {
+            "id": 1,
+            "name": "1",
+            "balance": 1900,
+            "pos": 6,
+            "owned": [
+                {
+                    "pos": 6,
+                    "colour": "Teal",
+                    "name": "Euston Road",
+                    "cost": 100,
+                    "l1": 6,
+                    "l2": 30,
+                    "l3": 90,
+                    "l4": 270,
+                    "l5": 400,
+                    "upgradeCost": 50,
+                    "rent": 6,
+                    "level": 1,
+                    "owned": true
+                }
+            ],
+            "sameDice": 0,
+            "jailed": false,
+            "bankrupt": false
+        },
+        {
+            "id": 2,
+            "name": "2",
+            "balance": 2000,
+            "pos": 0,
+            "owned": [],
+            "sameDice": 0,
+            "jailed": false,
+            "bankrupt": false
+        },
+        {
+            "id": 3,
+            "name": "3",
+            "balance": 2000,
+            "pos": 0,
+            "owned": [],
+            "sameDice": 0,
+            "jailed": false,
+            "bankrupt": false
+        }
+    ]
+}

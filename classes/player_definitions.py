@@ -102,7 +102,7 @@ class Player:
             "name": self.name,
             "balance": self.balance,
             "pos": self.pos,
-            "owned": self.owned,
+            "owned": [tile.dictForm() for tile in self.owned],
             "sameDice": self.sameDice,
             "jailed": self.jailed,
             "bankrupt": self.bankrupt
