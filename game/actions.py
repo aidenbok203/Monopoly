@@ -160,20 +160,6 @@ def upgradeHouse(player: p_def.Player, property: t_def.Tile) -> None:
     else:
         print("You do not have sufficient funds!")
 
-def stateSave() -> str:
-    """
-    Writes current variables into json file
-    :return str: 
-    """
-    # Player states
-    try:
-        data = [player.dictForm() for player in init.playerList]
-        with open(init.path("db/save.json"), "w") as f:
-            json.dump({"players": data}, f, indent = 4)
-        return "Game saved!"
-    except Exception as e:
-        return f"Error occured: {e}"
-
 def clearTerminal() -> None:
     """
     Clears the terminal.

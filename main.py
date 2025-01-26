@@ -2,6 +2,7 @@ from game import init
 from game import actions
 from classes import player_definitions as p_def
 from time import sleep
+from os.path import exists
 
 def round(player: p_def.Player) -> str:
     """
@@ -49,13 +50,14 @@ def round(player: p_def.Player) -> str:
                     choice = int(input("Enter the position of the property you want to sell: "))
                     for tile in player.owned:
                         if tile.pos == choice:
-                            if input(f"Confirm you would like to sell {tile.name} for ${tile.cost * 0.75}? (y/n) ").lower() == "y":
-                                player.removeProperty(tile)
-                                tile.sellTile()
-                                print(f"Sold {tile.name} for ${tile.cost * 0.75}.")
-                                break
-                            else:
-                                break
+                            target = tile
+                            break
+                    if target:
+                        if input(f"Confirm you would like to sell {tile.name} for ${tile.cost * 0.75}? (y/n) ").lower() == "y":
+                            player.removeProperty(target)
+                            target.sellTile()
+                            print(f"Sold {target.name} for ${target.cost * 0.75}.")
+                            break
                     else:
                         print("You do not own this property!")
                 except:
@@ -72,7 +74,7 @@ def round(player: p_def.Player) -> str:
                 roundFinish = True
                 print("Completing round...")
             case "g":
-                print(actions.stateSave())
+                print(init.stateSave())
             case "f":
                 if input("Enter \"y\" if you would like to exit the game: ") == "y":
                     print("Exiting game...")
@@ -82,9 +84,17 @@ def round(player: p_def.Player) -> str:
                 print("Invalid input.")
 
 def main():
-    init.initialiseTiles()
-    init.initialiseCards()
-    init.initialisePlayers()
+    if exists(init.path("db/save.json")):
+        if input("Would you like to load previous save? (y/n) ") == "y":
+            try:
+                init.loadGame()
+                print("Loaded save!")
+            except Exception as e:
+                print(f"Error occured: {e}")
+    else:
+        init.initialiseTiles()
+        init.initialiseCards()
+        init.initialisePlayers()
     while not actions.checkGameOver():
         for player in init.playerList:
             round(player)

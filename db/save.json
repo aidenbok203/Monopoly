@@ -1,0 +1,642 @@
+{
+    "players": [
+        {
+            "id": 1,
+            "name": "1",
+            "balance": 1900,
+            "pos": 0,
+            "owned": [],
+            "sameDice": 0,
+            "jailed": false,
+            "bankrupt": false
+        },
+        {
+            "id": 2,
+            "name": "2",
+            "balance": 2000,
+            "pos": 0,
+            "owned": [],
+            "sameDice": 0,
+            "jailed": false,
+            "bankrupt": false
+        },
+        {
+            "id": 3,
+            "name": "3",
+            "balance": 2000,
+            "pos": 0,
+            "owned": [],
+            "sameDice": 0,
+            "jailed": false,
+            "bankrupt": false
+        }
+    ]
+}{
+    "tiles": [
+        {
+            "pos": 0,
+            "colour": "Null",
+            "name": "Go",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 1,
+            "colour": "Brown",
+            "name": "Old Kent Road",
+            "cost": 60,
+            "l1": 2,
+            "l2": 10,
+            "l3": 30,
+            "l4": 90,
+            "l5": 160,
+            "upgradeCost": 50,
+            "rent": 2,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 2,
+            "colour": "Null",
+            "name": "Community Chest",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 3,
+            "colour": "Brown",
+            "name": "Whitechapel Road",
+            "cost": 60,
+            "l1": 4,
+            "l2": 20,
+            "l3": 60,
+            "l4": 180,
+            "l5": 320,
+            "upgradeCost": 50,
+            "rent": 4,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 4,
+            "colour": "Teal",
+            "name": "The Angel Islington",
+            "cost": 100,
+            "l1": 6,
+            "l2": 30,
+            "l3": 90,
+            "l4": 270,
+            "l5": 400,
+            "upgradeCost": 50,
+            "rent": 6,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 5,
+            "colour": "Null",
+            "name": "Chance Card",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 6,
+            "colour": "Teal",
+            "name": "Euston Road",
+            "cost": 100,
+            "l1": 6,
+            "l2": 30,
+            "l3": 90,
+            "l4": 270,
+            "l5": 400,
+            "upgradeCost": 50,
+            "rent": 6,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 7,
+            "colour": "Teal",
+            "name": "Pentonville Road",
+            "cost": 120,
+            "l1": 8,
+            "l2": 40,
+            "l3": 100,
+            "l4": 300,
+            "l5": 450,
+            "upgradeCost": 50,
+            "rent": 8,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 8,
+            "colour": "Pink",
+            "name": "Pall Mall",
+            "cost": 140,
+            "l1": 10,
+            "l2": 50,
+            "l3": 150,
+            "l4": 450,
+            "l5": 625,
+            "upgradeCost": 100,
+            "rent": 10,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 9,
+            "colour": "Pink",
+            "name": "Whitehall",
+            "cost": 140,
+            "l1": 10,
+            "l2": 50,
+            "l3": 150,
+            "l4": 450,
+            "l5": 625,
+            "upgradeCost": 100,
+            "rent": 10,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 10,
+            "colour": "Pink",
+            "name": "Northumberland Avenue",
+            "cost": 160,
+            "l1": 12,
+            "l2": 60,
+            "l3": 180,
+            "l4": 500,
+            "l5": 700,
+            "upgradeCost": 100,
+            "rent": 12,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 11,
+            "colour": "Orange",
+            "name": "Bow Street",
+            "cost": 180,
+            "l1": 14,
+            "l2": 70,
+            "l3": 200,
+            "l4": 550,
+            "l5": 750,
+            "upgradeCost": 100,
+            "rent": 14,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 12,
+            "colour": "Null",
+            "name": "Community Chest",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 13,
+            "colour": "Orange",
+            "name": "Marlborough Street",
+            "cost": 180,
+            "l1": 14,
+            "l2": 70,
+            "l3": 200,
+            "l4": 550,
+            "l5": 750,
+            "upgradeCost": 100,
+            "rent": 14,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 14,
+            "colour": "Orange",
+            "name": "Vine Street",
+            "cost": 200,
+            "l1": 16,
+            "l2": 80,
+            "l3": 220,
+            "l4": 600,
+            "l5": 800,
+            "upgradeCost": 100,
+            "rent": 16,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 15,
+            "colour": "Null",
+            "name": "Jail",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 16,
+            "colour": "Red",
+            "name": "The Strand",
+            "cost": 220,
+            "l1": 18,
+            "l2": 90,
+            "l3": 250,
+            "l4": 700,
+            "l5": 875,
+            "upgradeCost": 150,
+            "rent": 18,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 17,
+            "colour": "Null",
+            "name": "Chance Card",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 18,
+            "colour": "Red",
+            "name": "Fleet Street",
+            "cost": 220,
+            "l1": 18,
+            "l2": 90,
+            "l3": 250,
+            "l4": 700,
+            "l5": 875,
+            "upgradeCost": 150,
+            "rent": 18,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 19,
+            "colour": "Red",
+            "name": "Trafalgar Square",
+            "cost": 240,
+            "l1": 20,
+            "l2": 100,
+            "l3": 300,
+            "l4": 750,
+            "l5": 925,
+            "upgradeCost": 150,
+            "rent": 20,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 20,
+            "colour": "Yellow",
+            "name": "Leicester Square",
+            "cost": 260,
+            "l1": 22,
+            "l2": 110,
+            "l3": 330,
+            "l4": 800,
+            "l5": 975,
+            "upgradeCost": 150,
+            "rent": 22,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 21,
+            "colour": "Yellow",
+            "name": "Coventry Street",
+            "cost": 260,
+            "l1": 22,
+            "l2": 110,
+            "l3": 330,
+            "l4": 800,
+            "l5": 975,
+            "upgradeCost": 150,
+            "rent": 22,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 22,
+            "colour": "Yellow",
+            "name": "Picadilly",
+            "cost": 280,
+            "l1": 22,
+            "l2": 120,
+            "l3": 360,
+            "l4": 850,
+            "l5": 1025,
+            "upgradeCost": 150,
+            "rent": 22,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 23,
+            "colour": "Green",
+            "name": "Regent Street",
+            "cost": 300,
+            "l1": 26,
+            "l2": 130,
+            "l3": 390,
+            "l4": 900,
+            "l5": 1100,
+            "upgradeCost": 200,
+            "rent": 26,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 24,
+            "colour": "Green",
+            "name": "Oxford Street",
+            "cost": 300,
+            "l1": 26,
+            "l2": 130,
+            "l3": 390,
+            "l4": 900,
+            "l5": 1100,
+            "upgradeCost": 200,
+            "rent": 26,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 25,
+            "colour": "Null",
+            "name": "Community Chest",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 26,
+            "colour": "Green",
+            "name": "Bond Street",
+            "cost": 320,
+            "l1": 28,
+            "l2": 150,
+            "l3": 450,
+            "l4": 1000,
+            "l5": 1200,
+            "upgradeCost": 200,
+            "rent": 28,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 27,
+            "colour": "Null",
+            "name": "Chance Card",
+            "cost": 0,
+            "l1": 0,
+            "l2": 0,
+            "l3": 0,
+            "l4": 0,
+            "l5": 0,
+            "upgradeCost": 0,
+            "rent": 0,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 28,
+            "colour": "Blue",
+            "name": "Park Lane",
+            "cost": 350,
+            "l1": 35,
+            "l2": 175,
+            "l3": 500,
+            "l4": 1100,
+            "l5": 1300,
+            "upgradeCost": 200,
+            "rent": 35,
+            "level": 1,
+            "owned": false
+        },
+        {
+            "pos": 29,
+            "colour": "Blue",
+            "name": "Mayfair",
+            "cost": 400,
+            "l1": 50,
+            "l2": 200,
+            "l3": 600,
+            "l4": 1400,
+            "l5": 1700,
+            "upgradeCost": 200,
+            "rent": 50,
+            "level": 1,
+            "owned": false
+        }
+    ]
+}{
+    "chance": [
+        {
+            "title": "Advance to go",
+            "func": [
+                "Player.pos = 0",
+                "Player.balance += 200"
+            ],
+            "used": false
+        },
+        {
+            "title": "Advance to Trafalgar Square",
+            "func": [
+                "Player.pos = 15"
+            ],
+            "used": false
+        },
+        {
+            "title": "Advance to Mayfair",
+            "func": [
+                "Player.pos = 25"
+            ],
+            "used": false
+        },
+        {
+            "title": "Advance to Pall Mall",
+            "func": [
+                "Player.pos = 8"
+            ],
+            "used": false
+        },
+        {
+            "title": "Bank pays you dividend of \u00a350",
+            "func": [
+                "Player.balance += 50"
+            ],
+            "used": false
+        },
+        {
+            "title": "Go back 3 spaces",
+            "func": [
+                "Player.pos -= 3"
+            ],
+            "used": false
+        },
+        {
+            "title": "Go directly to jail",
+            "func": [
+                "Player.pos = 15"
+            ],
+            "used": false
+        },
+        {
+            "title": "Speeding fine \u00a315",
+            "func": [
+                "Player.balance -= 15"
+            ],
+            "used": false
+        },
+        {
+            "title": "You have been elected Chairman of the Board. Pay each player \u00a350",
+            "func": [
+                "Player.balance -= init.playerNum * 50"
+            ],
+            "used": false
+        },
+        {
+            "title": "Your building loan matures. Collect \u00a3150",
+            "func": [
+                "Player.balance += 150"
+            ],
+            "used": false
+        }
+    ]
+}{
+    "community": [
+        {
+            "title": "Advance to go (Collect \u00a3200)",
+            "func": [
+                "Player.pos = 0",
+                "Player.balance += 200"
+            ],
+            "used": false
+        },
+        {
+            "title": "Bank error in your favour. Collect \u00a3200",
+            "func": [
+                "Player.balance += 200"
+            ],
+            "used": false
+        },
+        {
+            "title": "Doctor's fee. Pay \u00a350",
+            "func": [
+                "Player.balance -= 50"
+            ],
+            "used": false
+        },
+        {
+            "title": "From sale of stock you get \u00a350",
+            "func": [
+                "Player.balance += 50"
+            ],
+            "used": false
+        },
+        {
+            "title": "Holiday fund matures. Receive \u00a3100",
+            "func": [
+                "Player.balance += 100"
+            ],
+            "used": false
+        },
+        {
+            "title": "Income tax refund. Collect \u00a320",
+            "func": [
+                "Player.balance += 20"
+            ],
+            "used": false
+        },
+        {
+            "title": "Pay hospital fees of \u00a3100",
+            "func": [
+                "Player.balance -= 100"
+            ],
+            "used": false
+        },
+        {
+            "title": "Pay School fees of \u00a350",
+            "func": [
+                "Player.balance -= 50"
+            ],
+            "used": false
+        },
+        {
+            "title": "Receive \u00a325 consultancy fee",
+            "func": [
+                "Player.balance += 25"
+            ],
+            "used": false
+        },
+        {
+            "title": "You have won second prize in a beauty contest. Collect \u00a310",
+            "func": [
+                "Player.balance += 10"
+            ],
+            "used": false
+        },
+        {
+            "title": "You inherit \u00a3100",
+            "func": [
+                "Player.balance += 100"
+            ],
+            "used": false
+        }
+    ]
+}

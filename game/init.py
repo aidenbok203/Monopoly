@@ -92,6 +92,42 @@ def initialisePlayers() -> None:
         name = input(f"Enter player {i + 1} name: ")
         playerList.append(p_def.Player(i + 1, name, startMoney))
 
+def stateSave() -> None:
+    """
+    Writes current variables into json file
+    """
+    try:
+        players = [player.dictForm() for player in playerList]
+        tiles = [tile.dictForm() for tile in board]
+        chances = [chance.dictForm() for chance in chanceList]
+        communitys = [community.dictForm() for community in communityList]
+        with open(path("db/save.json"), "w") as f:
+            json.dump({"players": players}, f, indent = 4)
+            json.dump({"tiles": tiles}, f, indent = 4)
+            json.dump({"chance": chances}, f, indent = 4)
+            json.dump({"community": communitys}, f, indent = 4)
+    except Exception as e:
+        return f"Error occured: {e}"
+
+def loadGame() -> None:
+    """
+    Loads game from save.json
+    """
+    with open(path("db/save.json"), "r") as f:
+        data = json.load(f)
+        players = []
+        for playerData in data["players"]:
+            players.append(p_def.Player(
+                playerData["id"],
+                playerData["name"],
+                playerData["balance"],
+                playerData["pos"],
+                playerData["owned"],
+                playerData["sameDice"],
+                playerData["jailed"],
+                playerData["bankrupt"]
+            ))
+
 def displayMenu() -> None:
     """
     Displays available actions to player
