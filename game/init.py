@@ -82,7 +82,7 @@ def initialisePlayers() -> None:
                 print("You need at least 2 players!")
                 continue
             validate = True
-        except:
+        except Exception:
             print("Invalid input!")
     global bankruptLimit
     bankruptLimit = playerNum - 1
@@ -101,11 +101,15 @@ def stateSave() -> None:
         tiles = [tile.dictForm() for tile in board]
         chances = [chance.dictForm() for chance in chanceList]
         communitys = [community.dictForm() for community in communityList]
+        data = {
+            "players": players,
+            "tiles": tiles,
+            "chance": chances,
+            "community": communitys
+        }
         with open(path("db/save.json"), "w") as f:
-            json.dump({"players": players}, f, indent = 4)
-            json.dump({"tiles": tiles}, f, indent = 4)
-            json.dump({"chance": chances}, f, indent = 4)
-            json.dump({"community": communitys}, f, indent = 4)
+            json.dump(data, f, indent = 4)
+            return "Game saved!"
     except Exception as e:
         return f"Error occured: {e}"
 
@@ -113,6 +117,9 @@ def loadGame() -> None:
     """
     Loads game from save.json
     """
+    global bankruptPlayers, bankruptLimit
+    bankruptPlayers = 0
+    bankruptLimit = 0
     with open(path("db/save.json"), "r") as f:
         data = json.load(f)
         players = []
@@ -127,6 +134,23 @@ def loadGame() -> None:
                 playerData["jailed"],
                 playerData["bankrupt"]
             ))
+            bankruptLimit += 1
+
+def checkLoad() -> bool:
+    """
+    Checks if user wants to load savefile
+    :return bool: Returns if user wants to load save
+    """
+    if os.path.exists(path("db/save.json")):
+        if input("Would you like to load previous save? (y/n) ") == "y":
+            try:
+                loadGame()
+                print("Loaded save!")
+                return True
+            except Exception as e:
+                print(f"Error occured: {e}")
+        return False
+    return False
 
 def displayMenu() -> None:
     """
