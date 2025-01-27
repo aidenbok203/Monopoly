@@ -26,3 +26,14 @@ class Card:
         for func in self.func:
             exec(func, context)
 
+    def dictForm(self):
+        """
+        Returns in dictionary format
+        :return dict: Dictionary including data of tile object
+        """
+        return {
+            "title": self.title,
+            "func": self.func,
+            "used": self.used
+        }
+
