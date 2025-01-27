@@ -87,8 +87,6 @@ def main():
         init.initialiseTiles()
         init.initialiseCards()
         init.initialisePlayers()
-    else:
-        init.loadGame()
     while not actions.checkGameOver():
         for player in init.playerList:
             round(player)
