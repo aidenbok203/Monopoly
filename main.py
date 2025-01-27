@@ -72,8 +72,6 @@ def round(player: p_def.Player) -> str:
             case "c":
                 roundFinish = True
                 print("Completing round...")
-            case "g":
-                print(init.stateSave())
             case "f":
                 if input("Enter \"y\" if you would like to exit the game: ") == "y":
                     print("Exiting game...")
@@ -90,6 +88,7 @@ def main():
     while not actions.checkGameOver():
         for player in init.playerList:
             round(player)
+            init.stateSave()
             winner = actions.checkGameOver()
             if winner:
                 break

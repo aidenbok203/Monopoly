@@ -134,6 +134,34 @@ def loadGame() -> None:
                 playerData["bankrupt"]
             ))
             bankruptLimit += 1
+        for tileData in data["tiles"]:
+            board.append(t_def.Tile(
+                tileData["pos"],
+                tileData["colour"],
+                tileData["name"],
+                tileData["cost"],
+                tileData["l1"],
+                tileData["l2"],
+                tileData["l3"],
+                tileData["l4"],
+                tileData["l5"],
+                tileData["upgradeCost"],
+                tileData["rent"],
+                tileData["level"],
+                tileData["owned"]
+                ))
+        for chanceData in data["chance"]:
+            chanceList.append(c_def.Card(
+                chanceData["title"],
+                chanceData["func"],
+                chanceData["used"]
+            ))
+        for communityData in data["community"]:
+            communityList.append(c_def.Card(
+                communityData["title"],
+                communityData["func"],
+                communityData["used"]
+            ))
 
 def checkLoad() -> bool:
     """
@@ -163,5 +191,4 @@ def displayMenu() -> None:
     print("Sell property................s")
     print("Upgrade property.............l")
     print("Complete turn................c")
-    print("Save game....................g")
     print("Close game...................f")
