@@ -122,9 +122,8 @@ def loadGame() -> None:
     bankruptLimit = 0
     with open(path("db/save.json"), "r") as f:
         data = json.load(f)
-        players = []
         for playerData in data["players"]:
-            players.append(p_def.Player(
+            playerList.append(p_def.Player(
                 playerData["id"],
                 playerData["name"],
                 playerData["balance"],
