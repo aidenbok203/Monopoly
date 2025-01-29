@@ -122,18 +122,7 @@ def loadGame() -> None:
     bankruptLimit = 0
     with open(path("db/save.json"), "r") as f:
         data = json.load(f)
-        for playerData in data["players"]:
-            playerList.append(p_def.Player(
-                playerData["id"],
-                playerData["name"],
-                playerData["balance"],
-                playerData["pos"],
-                playerData["owned"],
-                playerData["sameDice"],
-                playerData["jailed"],
-                playerData["bankrupt"]
-            ))
-            bankruptLimit += 1
+
         for tileData in data["tiles"]:
             board.append(t_def.Tile(
                 tileData["pos"],
@@ -150,6 +139,21 @@ def loadGame() -> None:
                 tileData["level"],
                 tileData["owned"]
                 ))
+        for playerData in data["players"]:
+            player = p_def.Player(
+                playerData["id"],
+                playerData["name"],
+                playerData["balance"],
+                playerData["pos"],
+                playerData["sameDice"],
+                playerData["jailed"],
+                playerData["bankrupt"]
+            )
+            playerList.append(player)
+            bankruptLimit += 1
+            for tile in board:
+                if tile.owned == player.id:
+                    player.owned.append(tile)
         for chanceData in data["chance"]:
             chanceList.append(c_def.Card(
                 chanceData["title"],

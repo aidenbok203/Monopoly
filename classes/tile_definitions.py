@@ -14,10 +14,10 @@ class Tile:
     upgradeCost: int
     rent: int
     level: int = 1
-    owned: bool = False
+    owned: int = None
 
     def __str__(self):
-        return f"Position: {self.pos}, Colour: {self.colour}, Name: {self.name}, Cost: {self.cost}, Level {self.level}, Upgrade cost: {self.upgradeCost}, Rent: {self.rent}, Owned: {self.owned}"
+        return f"Position: {self.pos}, Colour: {self.colour}, Name: {self.name}, Cost: {self.cost}, Level {self.level}, Upgrade cost: {self.upgradeCost}, Rent: {self.rent}, Owned by: {self.owned}"
 
     def sellTile(self) -> None:
         """

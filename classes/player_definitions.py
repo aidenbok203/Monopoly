@@ -3,15 +3,15 @@ from game import init
 from classes import tile_definitions as t_def
 
 class Player:
-    def __init__(self, id, name, balance, pos = 0, owned = None, sameDice = 0, jailed = False, bankrupt = False):
+    def __init__(self, id, name, balance, pos = 0, sameDice = 0, jailed = False, bankrupt = False, owned = None):
         self.id = id
         self.name = name
         self.balance = balance
         self.pos = pos
-        self.owned = owned if owned is not None else []
         self.sameDice = sameDice
         self.jailed = jailed
         self.bankrupt = bankrupt
+        self.owned = owned if owned is not None else []
 
     def __str__(self):
         return f"Player id {self.id}, position: {self.pos}, balance: ${self.balance}"
@@ -102,8 +102,8 @@ class Player:
             "name": self.name,
             "balance": self.balance,
             "pos": self.pos,
-            "owned": [tile.dictForm() for tile in self.owned],
             "sameDice": self.sameDice,
             "jailed": self.jailed,
-            "bankrupt": self.bankrupt
+            "bankrupt": self.bankrupt,
+            "owned": [tile.dictForm() for tile in self.owned],
         }

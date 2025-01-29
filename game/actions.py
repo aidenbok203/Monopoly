@@ -39,7 +39,7 @@ def purchase(player: p_def.Player, property: t_def.Tile) -> None:
     """
     if player.balance >= property.cost:
         player.balance -= property.cost
-        property.owned = True
+        property.owned = player.id
         player.owned.append(property)
     else:
         print(f"You do not have enough money to purchase {property.name}!")
@@ -112,7 +112,7 @@ def roll(player: p_def.Player) -> None:
                 input("Press enter to continue...")
                 return
             break
-    if tile.owned:
+    if tile.owned is not None:
         print(f"This tile is owned! You have to pay {tile.rent}")
         payRent(player, tile)
         player.checkBankruptcy()
