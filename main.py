@@ -91,9 +91,8 @@ def main():
             init.stateSave()
             winner = actions.checkGameOver()
             if winner:
+                print(f"{winner.name} has won the game with ${winner.balance}!")
                 break
-    if winner:
-        print(f"{winner.name} has won the game with ${winner.balance}!")
 
 if __name__ == "__main__":
     main()
