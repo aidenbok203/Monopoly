@@ -171,7 +171,11 @@ def checkLoad() -> bool:
     Checks if user wants to load savefile
     :return bool: Returns if user wants to load save
     """
-    if os.path.exists("db/save.json"):
+    conn = sqlite3.connect("db/data.db")
+    cur = conn.cursor()
+    cur.execute("SELECT id FROM playerSave")
+    row = cur.fetchone()
+    if row:
         if input("Would you like to load previous save? (y/n) ") == "y":
             try:
                 loadGame()
