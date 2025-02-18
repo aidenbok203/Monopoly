@@ -2,8 +2,8 @@ from classes import card_definitions as c_def
 from classes import tile_definitions as t_def
 from classes import player_definitions as p_def
 import os
-import sys
 import json
+import sqlite3
 
 board = []
 playerList = []
@@ -21,21 +21,21 @@ setLimit = {
     "Blue": 2
 }
 
-def path(relative_path) -> str:
-    """
-    Get the absolute path to the resource
-    :param relative_path: Path to the file
-    :return str: Absolute path to resource
-    """
-    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    if getattr(sys, "frozen", False):
-        # Running in a bundled executable
-        abs_path = os.path.join(base_path, relative_path)
-    else:
-        # Running in a local env
-        base_path = os.path.dirname(os.path.abspath(__file__))
-        abs_path = os.path.join(base_path, f"../{relative_path}")
-    return abs_path
+# def path(relative_path) -> str:
+#     """
+#     Get the absolute path to the resource
+#     :param relative_path: Path to the file
+#     :return str: Absolute path to resource
+#     """
+#     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+#     if getattr(sys, "frozen", False):
+#         # Running in a bundled executable
+#         abs_path = os.path.join(base_path, relative_path)
+#     else:
+#         # Running in a local env
+#         base_path = os.path.dirname(os.path.abspath(__file__))
+#         abs_path = os.path.join(base_path, f"../{relative_path}")
+#     return abs_path
 
 def initialiseCards() -> None:
     """
@@ -43,7 +43,7 @@ def initialiseCards() -> None:
     :return: None
     """
     global chanceList, communityList
-    with open(path("db/cards.json"), "r") as f:
+    with open("db/cards.json", "r") as f:
         data = json.load(f)
     chanceList = [
         c_def.Card(card["name"], card["functions"])
@@ -60,12 +60,15 @@ def initialiseTiles() -> None:
     Initialise tile properties from database
     :return: None
     """
-    with open(path("db/tiles.txt"), "r") as f:
-        tiles = f.readlines()
-        for tile in tiles:
-            pos, group, name, cost, l1, l2, l3, l4, l5, upgradeCost = tile.strip().split(",")
-            pos = t_def.Tile(int(pos), group, name, int(cost), int(l1), int(l2), int(l3), int(l4), int(l5), int(upgradeCost), int(l1))
-            board.append(pos)
+    conn = sqlite3.connect("db/data.db")
+    cur = conn.cursor()
+    cur.execute("SELECT pos, colour, name, cost, l1, l2, l3, l4, l5, upgradeCost, rent FROM tiles")
+    rows = cur.fetchall()
+    for row in rows:
+        board.append(t_def.Tile(pos=row[0], colour=row[1], name=row[2], cost=row[3],
+                                l1=row[4], l2=row[5], l3=row[6], l4=row[7], l5=row[8],
+                                upgradeCost=row[9], rent=row[10]))
+    conn.close()
 
 def initialisePlayers() -> None:
     """
@@ -94,85 +97,85 @@ def initialisePlayers() -> None:
 
 def stateSave() -> None:
     """
-    Writes current variables into json file
+    Save current state into db
     """
-    try:
-        players = [player.dictForm() for player in playerList]
-        tiles = [tile.dictForm() for tile in board]
-        chances = [chance.dictForm() for chance in chanceList]
-        communitys = [community.dictForm() for community in communityList]
-        data = {
-            "players": players,
-            "tiles": tiles,
-            "chance": chances,
-            "community": communitys
-        }
-        with open(path("db/save.json"), "w") as f:
-            json.dump(data, f, indent = 4)
-            return "Game saved!"
-    except Exception as e:
-        return f"Error occured: {e}"
+    conn = sqlite3.connect("db/data.db")
+    cur = conn.cursor()
+    # Player save
+    cur.execute("DROP TABLE IF EXISTS playerSave")
+    cur.execute("""CREATE TABLE playerSave (
+                id INTEGER PRIMARY KEY,
+                name VARCHAR(50),
+                balance INTEGER,
+                pos INTEGER,
+                sameDice INTEGER,
+                jailed INTEGER,
+                bankrupt INTEGER
+                )""")
+    for player in playerList:
+        cur.execute("INSERT INTO playerSave (id, name, balance, pos, sameDice, jailed, bankrupt) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    (player.id, player.name, player.balance, player.pos, player.sameDice, player.jailed, player.bankrupt)
+                    )
+    # Tile save
+    cur.execute("DROP TABLE IF EXISTS tileSave")
+    cur.execute("""CREATE TABLE tileSave (
+                pos INTEGER PRIMARY KEY,
+                rent INTEGER,
+                level INTEGER,
+                owned INTEGER
+    )""")
+    for tile in board:
+        cur.execute("INSERT INTO tileSave (pos, rent, level, owned) VALUES (?, ?, ?, ?)",
+                    (tile.pos, tile.rent, tile.level, tile.owned)
+                    )
+    conn.commit()
+    conn.close()
 
 def loadGame() -> None:
     """
-    Loads game from save.json
+    Loads game from db
     """
-    global bankruptPlayers, bankruptLimit
-    bankruptPlayers = 0
-    bankruptLimit = 0
-    with open(path("db/save.json"), "r") as f:
-        data = json.load(f)
+    global bankruptLimit, bankruptPlayers, playerNum
+    playerNum, bankruptPlayers = 0, 0
+    conn = sqlite3.connect("db/data.db")
+    cur = conn.cursor()
 
-        for tileData in data["tiles"]:
-            board.append(t_def.Tile(
-                tileData["pos"],
-                tileData["colour"],
-                tileData["name"],
-                tileData["cost"],
-                tileData["l1"],
-                tileData["l2"],
-                tileData["l3"],
-                tileData["l4"],
-                tileData["l5"],
-                tileData["upgradeCost"],
-                tileData["rent"],
-                tileData["level"],
-                tileData["owned"]
-                ))
-        for playerData in data["players"]:
-            player = p_def.Player(
-                playerData["id"],
-                playerData["name"],
-                playerData["balance"],
-                playerData["pos"],
-                playerData["sameDice"],
-                playerData["jailed"],
-                playerData["bankrupt"]
-            )
-            playerList.append(player)
-            bankruptLimit += 1
-            for tile in board:
-                if tile.owned == player.id:
-                    player.owned.append(tile)
-        for chanceData in data["chance"]:
-            chanceList.append(c_def.Card(
-                chanceData["title"],
-                chanceData["func"],
-                chanceData["used"]
-            ))
-        for communityData in data["community"]:
-            communityList.append(c_def.Card(
-                communityData["title"],
-                communityData["func"],
-                communityData["used"]
-            ))
+    # Player data
+    cur.execute("SELECT id, name, balance, pos, sameDice, jailed, bankrupt FROM playerSave")
+    rows = cur.fetchall()
+    for row in rows:
+        playerList.append(p_def.Player(id=row[0], name=row[1], balance=row[2], sameDice=bool(row[3]), jailed=bool(row[4]), bankrupt=bool(row[5])))
+        playerNum += 1
+    bankruptLimit = playerNum - 1
+
+    # Tile data
+    cur.execute("SELECT pos, rent, level, owned FROM tileSave")
+    tileSave = cur.fetchall()
+    cur.execute("SELECT colour, name, cost, l1, l2, l3, l4, l5, upgradeCost FROM tiles")
+    tiles = cur.fetchall()
+    for save, data in zip(tileSave, tiles):
+        board.append(t_def.Tile(pos=save[0], colour=data[0], name=data[1], cost=data[2], l1=data[3], l2=data[4], l3=data[5], l4=data[6], l5=data[7], upgradeCost=data[8], rent=save[1], level=save[2], owned=save[3]))
+    conn.close()
+
+    for tile in board:
+        if tile.owned is None:
+            continue
+        for player in playerList:
+            if player.id != tile.owned:
+                continue
+            player.owned.append(tile)
+    initialiseCards()
 
 def checkLoad() -> bool:
     """
     Checks if user wants to load savefile
     :return bool: Returns if user wants to load save
     """
-    if os.path.exists(path("db/save.json")):
+    conn = sqlite3.connect("db/data.db")
+    cur = conn.cursor()
+    cur.execute("SELECT id FROM playerSave")
+    row = cur.fetchone()
+    if row:
         if input("Would you like to load previous save? (y/n) ") == "y":
             try:
                 loadGame()
