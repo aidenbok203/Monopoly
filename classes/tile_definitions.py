@@ -27,24 +27,3 @@ class Tile:
         self.level = 1
         self.rent = self.l1
         self.owned = False
-
-    def dictForm(self):
-        """
-        Returns in dictionary format
-        :return dict: Dictionary including data of player object
-        """
-        return {
-            "pos": self.pos,
-            "colour": self.colour,
-            "name": self.name,
-            "cost": self.cost,
-            "l1": self.l1,
-            "l2": self.l2,
-            "l3": self.l3,
-            "l4": self.l4,
-            "l5": self.l5,
-            "upgradeCost": self.upgradeCost,
-            "rent": self.rent,
-            "level": self.level,
-            "owned": self.owned
-        }
