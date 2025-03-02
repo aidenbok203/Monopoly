@@ -173,17 +173,17 @@ def checkLoad() -> bool:
     """
     conn = sqlite3.connect("db/data.db")
     cur = conn.cursor()
-    cur.execute("SELECT id FROM playerSave")
-    row = cur.fetchone()
-    if row:
-        if input("Would you like to load previous save? (y/n) ") == "y":
-            try:
-                loadGame()
-                print("Loaded save!")
-                return True
-            except Exception as e:
-                print(f"Error occured: {e}")
+    try:
+        cur.execute("SELECT id FROM playerSave")
+    except:
         return False
+    if input("Would you like to load previous save? (y/n) ") == "y":
+        try:
+            loadGame()
+            print("Loaded save!")
+            return True
+        except Exception as e:
+            print(f"Error occured: {e}")
     return False
 
 def displayMenu() -> None:
